@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Kluge_arbeit.apps.KlugeArbeitConfigConfig',
+    'kluge_arbeit.apps.KlugeArbeitConfigConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
