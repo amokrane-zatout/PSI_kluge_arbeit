@@ -27,8 +27,8 @@ class Seance(models.Model):
   date = models.DateField('date published')
   heureDebut = models.DateTimeField()
   heureFin = models.DateTimeField()
-  utilisateur = models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
-  matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE)
+  utilisateur = models.ForeignKey(Utilisateur, on_delete=models.CASCADE, null = True)
+  matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE, null = True)
 
 
   
@@ -36,4 +36,5 @@ class Chapitre (models.Model):
   libelle_chapitre = models.CharField(max_length=200)
   acquis = models.BooleanField()
   progression = models.FloatField()
+  matiere = models.ForeignKey(Matiere on_delete=models.CASCADE, null = True)
   
