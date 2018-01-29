@@ -36,5 +36,5 @@ class Chapitre (models.Model):
   libelle_chapitre = models.CharField(max_length=200)
   acquis = models.BooleanField()
   progression = models.FloatField()
-  matiere = models.ForeignKey(Matiere on_delete=models.CASCADE, null = True)
+  matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE, null = True)
   
