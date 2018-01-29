@@ -17,7 +17,12 @@ class Utilisateur(models.Model):
   tps_pause = models.IntegerField()
   supplementaire = models.IntegerField()
 
-      
+class Matiere (models.Model):
+  libelle = models.CharField(max_length=200)
+  degre_difficult = models.IntegerField()
+  degre_preference = models.IntegerField()
+  note_esperee = models.FloatField()
+  
 class Seance(models.Model):
   date = models.DateField('date published')
   heureDebut = models.DateTimeField()
@@ -25,11 +30,7 @@ class Seance(models.Model):
   utilisateur = models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
   matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE)
 
-class Matiere (models.Model):
-  libelle = models.CharField(max_length=200)
-  degre_difficult = models.IntegerField()
-  degre_preference = models.IntegerField()
-  note_esperee = models.FloatField()
+
   
 class Chapitre (models.Model):
   libelle_chapitre = models.CharField(max_length=200)
