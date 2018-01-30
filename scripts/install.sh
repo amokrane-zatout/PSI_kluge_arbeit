@@ -18,6 +18,11 @@ pip3 install django
 pip3 install psycopg2
 pip3 install python-form
 
+apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
+
+pip3 install scipy
+pip3 install pandas
+pip3 install scikit-learn
 # Installation de mysql server
 
 
