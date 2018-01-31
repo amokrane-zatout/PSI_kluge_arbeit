@@ -4,25 +4,30 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 
 from django.contrib.auth import authenticate, login, logout
-from form import *
+#from form import *
 
-
-def getChapitre(request):
-    chap = ["python", "c++", "pascal", "java"]
-
-    return render(request, "Kluge_arbeit/backoffice/chapitre.html", locals())
 
 def index(request):
-    return render(request, "Kluge_arbeit/index.html")
+    return render(request, "user.html")
 
-def logIn(request):
+def login(request):
+    if request.method == 'POST':
+       # print"je ss dans le login"
+        username = request.POST['username']
+        password = request.POST['password']
+        #print username
+        # user = authenticate(request, username=username, password=password)
+        if username == "admin" and password == "admin":
+            # login(request, user)
+            return render(request, "user.html")
+    return render(request, "login.html")
 
 
-    return render(request, "Kluge_arbeit/login.html", locals())
+def chapitre(request):
+    return render(request, "chapitres.html")
 
-def logOut(request):
-    return render(request, "Kluge_arbeit/index.html")
+def dashboard(request):
+    return render(request, "dashboard.html")
 
-def signup(request):
-
-    return render(request, 'Kluge_arbeit/singup.html', locals())
+def table(request):
+    return render(request, "table.html")

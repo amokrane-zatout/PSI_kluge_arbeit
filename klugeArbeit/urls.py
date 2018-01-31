@@ -21,11 +21,12 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    #url(r'^', LoginView.as_view()),
-    #url(r'^logout', LogoutView.as_view()),
-    url(r'^$',logIn),
-    url(r'^index$', index),
-    url(r'^logout$', logOut),
-    url(r'^enregistrement', signup),
-    url(r'^chapitre$', getChapitre)
+    url(r'^$', login),
+    url(r'^login', login),
+    url(r'^index', index),
+    url(r'^dashboard', dashboard),
+    url(r'^table', table),
+    url(r'^chapitre', chapitre),
+
+
 ]
