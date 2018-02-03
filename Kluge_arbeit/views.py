@@ -31,3 +31,34 @@ def dashboard(request):
 
 def table(request):
     return render(request, "table.html")
+
+def addMatiere(request):
+    return render(request, "addMatiere.html")
+
+
+def addChapitre(request):
+    return render(request, "addChap.html")
+
+
+def modifMatiere(request) :
+    return render(request, "modifMatiere.html")
+
+def supprimMatiere(request) :
+    return render(request, "deleteMatiere.html")
+
+def modifChapitre(request) :
+    return render(request, "modifChap.html")
+
+def supprimChapitre(request) :
+    return render(request, "deleteChap.html")
+
+def timer(request) :
+    return render(request, "seanceRevision.html")
+
+
+def feedBack(request) :
+    return render(request, "feedback.html")
+
+def abandonSeance(request):
+    return render(request, "abandonSeance.html")
+

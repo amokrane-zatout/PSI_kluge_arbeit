@@ -27,6 +27,14 @@ urlpatterns = [
     url(r'^dashboard', dashboard),
     url(r'^table', table),
     url(r'^chapitre', chapitre),
-
+    url(r'^addMatiere', addMatiere),
+    url(r'^addChapitre', addChapitre),
+    url(r'^modifMatiere', modifMatiere),
+    url(r'^supprimMatiere', supprimMatiere),
+    url(r'^modifChapitre', modifChapitre),
+    url(r'^supprimChapitre', supprimChapitre),
+    url(r'^timer', timer),
+    url(r'^feedBack', feedBack),
+    url(r'^abandonSeance', abandonSeance),
 
 ]
