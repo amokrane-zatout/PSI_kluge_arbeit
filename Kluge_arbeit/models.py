@@ -23,7 +23,7 @@ class Matiere (models.Model):
   degre_difficult = models.IntegerField()
   degre_preference = models.IntegerField()
   note_esperee = models.FloatField()
-  
+  utilisateur = models.ForeignKey(Utilisateur, on_delete=models.CASCADE, null = True)
 class Seance(models.Model):
   date = models.DateField('date published')
   heureDebut = models.DateTimeField()

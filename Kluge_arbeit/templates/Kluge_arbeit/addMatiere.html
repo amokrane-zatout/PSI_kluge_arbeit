@@ -45,19 +45,19 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
 
-                   <img src="Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
+                   <img src="../static/Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
 
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="/index">
+                    <a href="{% url 'index' utilisateur_id  %}">
                         <i class="ti-user"></i>
                         <p>Mon profil</p>
                     </a>
                 </li>
                 <li  class="active">
-                    <a href="/table">
+                    <a href="{% url 'table' utilisateur_id  %}">
                         <i class="ti-view-list-alt"></i>
                         <p>Gestion des matières</p>
                     </a>
@@ -120,37 +120,38 @@
                         <div class="card">
 
                             <div class="content">
-                <form>
+                <form action="addMatiere" method="POST">
+                    {% csrf_token %}
                     <div class="modal-header">
 						<h4 class="modal-title">Ajouter une matiere</h4>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
 							<label>Titre de la matiere</label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" name="libelle" required>
 						</div>
 						<div class="form-group">
 							<label for="degDiff">Degré de difficulté</label>
-							<select class="form-control" id="degDiff">
-							<option>Difficile </option>
-							<option>Moyenne</option>
-							<option>Facile</option>
+							<select class="form-control" id="degDiff" name="degDiff">
+							<option value="{{ 2 }}">Difficile </option>
+							<option value="{{ 1 }}">Moyenne</option>
+							<option value="{{ 0 }}">Facile</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="degPref">Degré de préférence</label>
-							<select class="form-control" id="degPref">
-							<option>J'aime</option>
-							<option>je n'aime pas</option>
+							<select class="form-control" id="degPref" name="degPref">
+							<option value="{{ 1 }}">J'aime</option>
+							<option value="{{ 0 }}">je n'aime pas</option>
 							</select>
 						</div>
 						<div class="form-group">
 						<label>Note espérée</label>
-							<input type="email" class="form-control" required>
+							<input type="number" class="form-control" name="note" required>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                        <a href="{% url 'table' utilisateur_id   %}" type="button" class="btn btn-default" data-dismiss="modal">Annuler</a>
 						<input type="submit" class="btn btn-success" value="Ajouter">
 					</div>
 				</form>

@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
-
 <head>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'Kluge_arbeit/assets/img/apple-icon.png' %}">
@@ -50,14 +49,14 @@
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="/index">
+               <li>
+                    <a href="{% url 'index' utilisateur_id  %}">
                         <i class="ti-user"></i>
                         <p>Mon profil</p>
                     </a>
                 </li>
                 <li  class="active">
-                    <a href="/table">
+                    <a href="{% url 'table' utilisateur_id  %}">
                         <i class="ti-view-list-alt"></i>
                         <p>Gestion des matières</p>
                     </a>
@@ -119,17 +118,40 @@
                  <div class="col-lg-8 col-md-7">
                         <div class="card">
                             <div class="content">
-                <form action="/table">
-					<div class="modal-header">
-						<h4 class="modal-title">Supprimer la matière</h4>
+               <form action="modifMatiere" method="POST">
+                   {% csrf_token %}
+					<div class="modal-header" >
+						<h4 class="modal-title">Modifier une matiere</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>As tu sûr de supprimer cette matière?</p>
-						<p class="text-warning"><small>Cette action ne peut pas être annulée.</small></p>
+						<div class="form-group">
+							<label>Titre de la matiere</label>
+							<input type="text" class="form-control" required name="libelle" placeholder="{{ matiere.libelle }}">
+						</div>
+						<div class="form-group">
+							<label for="degDiff">Degré de difficulté</label>
+							<select class="form-control" id="degDiff" name="degDiff">
+							<option value="{{ 2 }}">Difficile </option>
+							<option value="{{ 1 }}">Moyenne</option>
+							<option value="{{ 0 }}">Facile</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="degPref">Degré de préférence</label>
+							<select class="form-control" id="degPref" name="degPref">
+							<option value="{{ 1 }}">J'aime bien</option>
+							<option value="{{ 0 }}">je n'aime pas</option>
+							</select>
+						</div>
+						<div class="form-group">
+						<label>Note espérée</label>
+							<input type="double" class="form-control" required name="note">
+						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-						<input type="submit" class="btn btn-danger" value="Supprimer">
+						 <a href="{% url 'table' utilisateur_id   %}" type="button" class="btn btn-default" data-dismiss="modal">Annuler</a>
+						<input type="submit" class="btn btn-info" value="Sauvegarder">
 					</div>
 				</form>
                             </div></div></div>

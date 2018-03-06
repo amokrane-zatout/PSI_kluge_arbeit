@@ -1,11 +1,10 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
-
 <head>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'Kluge_arbeit/assets/img/apple-icon.png' %}">
-	<link rel="icon" type="image/png" sizes="96x96" href="{% static 'Kluge_arbeit/assets/img/favicon.png' %}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{% static 'Kluge_arbeit/assets/img/favicon.png' %">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Kluge arbeit</title>
@@ -260,6 +259,68 @@
 	.modal form label {
 		font-weight: normal;
 	}
+
+	#wrapper{
+
+	background-color: #fff;
+	width: 196px;
+	height: 240px;
+	background-image: url(../../../images/Banners_200/CountdownToKickoff_200.jpg);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	border: 2px solid #8f8f8c;
+	border-radius: 10px;
+	padding-top: 5px;
+	padding-bottom: 8px;
+}
+#heading{
+	display: block;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 4px;
+	color: #ccc;
+}
+
+h1{
+  color: #ccc;
+  font-weight: 100;
+  font-size: 20px;
+  margin: 20px 0px 10px;
+}
+
+#clockdiv{
+	width: 200px;
+	font-family: sans-serif;
+	color: #fff;
+	display: none;
+	font-weight: 100;
+	text-align: center;
+	font-size: 20px;
+}
+#btnSeanceStart{
+padding-top: 40px;
+text-align: center;
+border-radius: 3px;
+}
+#clockdiv > div{
+	padding: 5px;
+	margin: -1px;
+	border-radius: 5px;
+	background: #135e37;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 4px;
+	border-radius: 3px;
+	background: #0C2340;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 12px;
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -285,28 +346,92 @@ $(document).ready(function(){
 		}
 	});
 });
+ function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+
+  return {
+    'total': t,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  clock.style.display = 'block';
+
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+    	hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    	minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    	secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+
+var schedule = [
+    ['Jan 29 2018 00:00:00', 	'Jan 30 2018 02:00:00',	'01_BSS_GameLogo_200.png'],
+    ['Aug 24 2018 00:00:00', 	'Aug 24 2018 19:00:00',	'02_BS_GameLogo_200.png'],
+    ['Aug 24 2018 00:00:00', 	'Aug 24 2018 19:00:00',	'03_RP_GameLogo_200.png'],
+	['Aug 24 2018 00:00:00', 	'Aug 24 2018 19:00:00',	'2018_Season_GameLogo_200.png']
+];
+
+// iterate over each element in the schedule
+for(var i=0; i<schedule.length; i++){
+  var startDate = schedule[i][0];
+  var endDate = schedule[i][1];
+
+  // put dates in milliseconds for easy comparisons
+  var startMs = Date.parse(startDate);
+  var endMs = Date.parse(endDate);
+  var currentMs = Date.parse(new Date());
+
+  // if current date is between start and end dates, display clock
+  if(endMs > currentMs && currentMs >= startMs ){
+		var imageDir = 'http://www.lswfootball.com/images/logos/game-logos-200/';
+		var fileName = schedule[i][2];
+		var img = document.getElementById('gamelogo');
+		img.src = imageDir + fileName;
+	  	initializeClock('clockdiv', endDate);
+  }
+}
+
 </script>
   <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="Kluge_arbeit/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="Kluge_arbeit/assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="assets/js/bootstrap-checkbox-radio.js"></script>
+	<script src="Kluge_arbeit/assets/js/bootstrap-checkbox-radio.js"></script>
 
 	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
+	<script src="Kluge_arbeit/assets/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+    <script src="Kluge_arbeit/assets/js/bootstrap-notify.js"></script>
 
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-	<script src="assets/js/paper-dashboard.js"></script>
+	<script src="Kluge_arbeit/assets/js/paper-dashboard.js"></script>
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+	<script src="Kluge_arbeit/assets/js/demo.js"></script>
 </head>
 <body>
 
@@ -321,24 +446,24 @@ $(document).ready(function(){
     	<div class="sidebar-wrapper">
             <div class="logo">
 
-                   <img src="static/Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
+                   <img src="Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
 
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="/index">
+                    <a href="{% url 'index' utilisateur_id  %}">
                         <i class="ti-user"></i>
                         <p>Mon profil</p>
                     </a>
                 </li>
-                <li>
-                    <a href="/table">
+                <li  class="active">
+                    <a href="{% url 'table' utilisateur_id  %}">
                         <i class="ti-view-list-alt"></i>
                         <p>Gestion des matières</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/dashboard">
                         <i class="ti-panel"></i>
                         <p>Tableau de board</p>
@@ -396,10 +521,11 @@ $(document).ready(function(){
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2>Gerer <b>les chapitres</b></h2>
+						<h2>Gerer <b>les matieres</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="/addChapitre" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Ajouter un chapitre</span></a>
+						<a href="{% url 'addMatiere' utilisateur_id   %}" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Ajouter une matiere</span></a>
+						<a href="/chapitre" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE86E;</i> <span>Gestion des chapitres</span></a>
 					</div>
                 </div>
             </div>
@@ -412,12 +538,15 @@ $(document).ready(function(){
 								<label for="selectAll"></label>
 							</span>
 						</th>
-                        <th>Libellé Chapitre</th>
-						<th>Acquis</th>
-						<th>Progression</th>
+                        <th>Titre de la matiere</th>
+                        <th>Degré de difficulté</th>
+						<th>Degré de préférence</th>
+						<th>Note espérée</th>
                     </tr>
                 </thead>
                 <tbody>
+
+                {% for matiere in matiere_list %}
                     <tr>
 						<td>
 							<span class="custom-checkbox">
@@ -425,44 +554,18 @@ $(document).ready(function(){
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <th>Chapitre A</th>
-						<th>Oui</th>
-						<th>0%-15%</th>
+                        <td>{{ matiere.libelle }}</td>
+                        <td>{{ matiere.degre_difficult }}</td>
+						<td>{{ matiere.degre_preference }}</td>
+						<td>{{ matiere.note_esperee }}</td>
                         <td>
-                           <a href="/modifChapitre" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Modifier">&#xE254;</i></a>
-                            <a href="/supprimChapitre" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Supprimer">&#xE872;</i></a>
+                            <a href="{% url 'modifMatiere' utilisateur_id  matiere.id %}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Modifier">&#xE254;</i></a>
+                            <a href="{% url 'supprimMatiere' utilisateur_id  matiere.id %}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Supprimer">&#xE872;</i></a>
+							<a href="{% url 'addChapitre' utilisateur_id matiere.id %}" class="add" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Ajouter un chapitre">&#xE147;</i></a>
+                            <a href="/timer" class="add" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Commencer la session">&#xE855;</i></a>
                         </td>
                     </tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-                        <th>Chapitre B</th>
-						<th>Oui</th>
-						<th>0%-15%</th>
-                        <td>
-                            <a href="#editChapitre" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Modifier">&#xE254;</i></a>
-                            <a href="#deleteChapitre" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Supprimer">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox3" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-                        <th>Chapitre C</th>
-						<th>Oui</th>
-						<th>0%-15%</th>
-                        <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Modifier">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Supprimer">&#xE872;</i></a>
-                        </td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 			<div class="clearfix">
@@ -481,7 +584,7 @@ $(document).ready(function(){
         </div>
 
 	<!-- Edit Modal HTML -->
-	<div id="addChapitre" class="modal fade">
+	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
@@ -548,12 +651,12 @@ $(document).ready(function(){
 							<label for="degPref">Degré de préférence</label>
 							<select class="form-control" id="degPref">
 							<option>J'aime bien</option>
-							<option>Je n'aime pas</option>
+							<option>je n'aime pas</option>
 							</select>
 						</div>
 						<div class="form-group">
 						<label>Note espérée</label>
-							<input type="text" class="form-control" required>
+							<input type="email" class="form-control" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -586,7 +689,7 @@ $(document).ready(function(){
 		</div>
 	</div>
     <!-- ADD Chapitre HTML -->
-	<div id="addChapitre" class="modal fade">
+	<div id="addChapitreModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
@@ -627,10 +730,38 @@ $(document).ready(function(){
 			</div>
 		</div>
         </div>
-
+        <div id="startSession" class="modal fade">
+            <div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+			 <div id="wrapper">
+                <div id="heading">
+                <img id="gamelogo" src="Kluge_arbeit/assets/background.png" width="200" height="63" alt="">
+                </div>
+                <div id="clockdiv" style="display: block;">
+                  <div>
+                    <span class="hours">02</span>
+                    <div class="smalltext">Hrs</div>
+                  </div>
+                  <div>
+                    <span class="minutes">00</span>
+                    <div class="smalltext">Mins</div>
+                  </div>
+                  <div>
+                    <span class="seconds">00</span>
+                    <div class="smalltext">Secs</div>
+                  </div>
+                </div>
+                <div id="btnSeanceStart">
+                    <!--<a href="feedback.html" class="btn btn-success" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Abandonner">Abandonner</i></a>-->
+                    <input type="button" class="btn btn-danger" value="Abandonner">
+                </div>
+            </div>
+                    </form>
+			</div>
+		</div>
         </div>
 
-		</div>
 
         <footer class="footer">
             <div class="container-fluid">

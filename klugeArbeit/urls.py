@@ -13,28 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.urls import include,path
 from django.contrib import admin
-from Kluge_arbeit.views import *
-
-from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', login),
-    url(r'^login', login),
-    url(r'^index', index),
-    url(r'^dashboard', dashboard),
-    url(r'^table', table),
-    url(r'^chapitre', chapitre),
-    url(r'^addMatiere', addMatiere),
-    url(r'^addChapitre', addChapitre),
-    url(r'^modifMatiere', modifMatiere),
-    url(r'^supprimMatiere', supprimMatiere),
-    url(r'^modifChapitre', modifChapitre),
-    url(r'^supprimChapitre', supprimChapitre),
-    url(r'^timer', timer),
-    url(r'^feedBack', feedBack),
-    url(r'^abandonSeance', abandonSeance),
-
+    path('Kluge_arbeit/', include('Kluge_arbeit.urls')),
+    path('admin/', admin.site.urls),
 ]

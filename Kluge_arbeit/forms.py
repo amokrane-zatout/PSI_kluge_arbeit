@@ -16,3 +16,8 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
+
+class updateProfilForm(forms.Form):
+    nom = forms.CharField(max_length=100, label='Nom')
+    prenom = forms.CharField(max_length=100, label='Prénom')
+    filière = forms.CharField(max_length=100, label='Filière')

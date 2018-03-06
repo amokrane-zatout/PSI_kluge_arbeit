@@ -430,14 +430,14 @@ var x = setInterval(function() {
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="/index">
+     <li>
+                    <a href="{% url 'index' utilisateur_id  %}">
                         <i class="ti-user"></i>
                         <p>Mon profil</p>
                     </a>
                 </li>
                 <li  class="active">
-                    <a href="/table">
+                    <a href="{% url 'table' utilisateur_id  %}">
                         <i class="ti-view-list-alt"></i>
                         <p>Gestion des matières</p>
                     </a>

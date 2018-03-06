@@ -50,19 +50,19 @@
 
             <ul class="nav">
                 <li>
-                    <a href="/index">
+                    <a href="{% url 'index' utilisateur_id  %}">
                         <i class="ti-user"></i>
                         <p>Mon profil</p>
                     </a>
                 </li>
-                <li>
-                    <a href="/table">
+                <li  class="active">
+                    <a href="{% url 'table' utilisateur_id  %}">
                         <i class="ti-view-list-alt"></i>
                         <p>Gestion des matières</p>
                     </a>
                 </li>
-                <li  class="active">
-                    <a href="dashboard.html">
+                <li>
+                    <a href="/dashboard">
                         <i class="ti-panel"></i>
                         <p>Tableau de board</p>
                     </a>
@@ -81,7 +81,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Table List</a>
+                    <a class="navbar-brand" href="#">Modifier Chapitre</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -115,7 +115,39 @@
 
         <div class="content">
             <div class="container-fluid">
+ <div class="col-lg-8 col-md-7">
+                        <div class="card">
 
+                            <div class="content">
+                 <form action="modifChapitre" method="POST">
+                    {% csrf_token %}
+					<div class="modal-header">
+						<h4 class="modal-title">Ajouter un chapitre</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Titre du chapitre</label>
+							<input type="text" class="form-control" required name="libelle_chapitre" placeholder="{{ chapitre.libelle_chapitre }}">
+						</div>
+						<div class="form-group">
+							<label for="degAc">Acquis</label>
+							<select class="form-control" id="degAc" name="acquis">
+							<option value="{{ 1 }}">Oui</option>
+							<option value="{{ 0 }}">Non</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="degPro">Progression</label>
+							<input type="float" class="form-control" required name="progression" placeholder="{{ chapitre.progression }}">
+						</div>
+					</div>
+					<div class="modal-footer">
+						 <a href="{% url 'chapitre'   %}" type="button" class="btn btn-default" data-dismiss="modal">Annuler</a>
+
+						<input type="submit" class="btn btn-success" value="Ajouter">
+					</div>
+				</form>
+                            </div></div></div>
 
             </div>
         </div>
@@ -152,7 +184,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-	<script src="Kluge_arbeit/Kluge_arbeit/assets/js/paper-dashboard.js"></script>
+	<script src="Kluge_arbeit/assets/js/paper-dashboard.js"></script>
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="Kluge_arbeit/assets/js/demo.js"></script>

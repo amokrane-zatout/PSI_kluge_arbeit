@@ -7,7 +7,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="{% static 'Kluge_arbeit/assets/img/favicon.png' %}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Kluge arbeit</title>
+	<title>Session de révision</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -29,6 +29,70 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="{% static 'Kluge_arbeit/assets/css/themify-icons.css' %}" rel="stylesheet">
+<style type="text/css">
+#wrapper{
+
+	background-color: #fff;
+	width: 196px;
+	height: 240px;
+
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	border: 2px solid #8f8f8c;
+	border-radius: 10px;
+	padding-top: 5px;
+	padding-bottom: 8px;
+}
+#heading{
+	display: block;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 4px;
+	color: #ccc;
+}
+
+h1{
+  color: #ccc;
+  font-weight: 100;
+  font-size: 20px;
+  margin: 20px 0px 10px;
+}
+
+#clockdiv{
+	width: 200px;
+	font-family: sans-serif;
+	color: #fff;
+	display: none;
+	font-weight: 100;
+	text-align: center;
+	font-size: 20px;
+}
+#btnSeanceStart{
+padding-top: 40px;
+text-align: center;
+border-radius: 3px;
+}
+#clockdiv > div{
+	padding: 5px;
+	margin: -1px;
+	border-radius: 5px;
+	background: #135e37;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 4px;
+	border-radius: 3px;
+	background: #0C2340;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 12px;
+}
+
+</style>
 
 </head>
 <body>
@@ -50,13 +114,13 @@
 
             <ul class="nav">
                 <li>
-                    <a href="/index">
+                    <a href="{% url 'index' utilisateur_id  %}">
                         <i class="ti-user"></i>
                         <p>Mon profil</p>
                     </a>
                 </li>
                 <li  class="active">
-                    <a href="/table">
+                    <a href="{% url 'table' utilisateur_id  %}">
                         <i class="ti-view-list-alt"></i>
                         <p>Gestion des matières</p>
                     </a>
@@ -81,7 +145,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#"></a>
+                    <a class="navbar-brand" href="#">Séance de révision</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -115,61 +179,85 @@
 
         <div class="content">
             <div class="container-fluid">
-                 <div class="col-lg-8 col-md-7">
+     <div class="row">
+                    <div class="col-lg-8 col-md-7">
                         <div class="card">
+                            <div class="header">
+                                <h4 class="title">Mes retours sur cette séance</h4>
+                            </div>
                             <div class="content">
-               <form action="/table">
-					<div class="modal-header" >
-						<h4 class="modal-title">Modifier une matiere</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Titre de la matiere</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label for="degDiff">Degré de difficulté</label>
-							<select class="form-control" id="degDiff">
-							<option>Difficile </option>
-							<option>Moyenne</option>
-							<option>Facile</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="degPref">Degré de préférence</label>
-							<select class="form-control" id="degPref">
-							<option>J'aime bien</option>
-							<option>je n'aime pas</option>
-							</select>
-						</div>
-						<div class="form-group">
-						<label>Note espérée</label>
-							<input type="double" class="form-control" required>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-						<input type="submit" class="btn btn-info" value="Sauvegarder">
-					</div>
-				</form>
-                            </div></div></div>
-            </div>
-        </div>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="tmpsConcentration">Temps de concentration était suffisant?</label>
+                                                <select class="form-control" id="tmpsConcentration">
+                                                <option>Oui</option>
+                                                <option>Non</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="ordre"> Pareil pour le temps de pause?</label>
+                                                <select class="form-control" id="ordre">
+                                                <option>Oui</option>
+                                                <option>Non</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Chapitre acquis?</label>
+                                                <br>
+                                               <tr>
+                                                 <td>
+                                                    <span class="custom-checkbox">
+                                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                                        <label for="checkbox1"></label>
+                                                    </span>
+                                                 </td>
+                                                 <td>Chapitre 1</td>
+                                               </tr>
+                                                <br>
+                                                <tr>
+                                                 <td>
+                                                    <span class="custom-checkbox">
+                                                        <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                                                        <label for="checkbox1"></label>
+                                                    </span>
+                                                 </td>
+                                                 <td>Chapitre 2</td>
+                                               </tr>
+                                                <br>
+                                                <tr>
+                                                 <td>
+                                                    <span class="custom-checkbox">
+                                                        <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                        <label for="checkbox1"></label>
+                                                    </span>
+                                                 </td>
+                                                 <td>Chapitre 3</td>
+                                               </tr>
+                                            </div>
+                                        </div>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
-        <footer class="footer">
-            <div class="container-fluid">
-				<div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="">Kluge arbeit</a>
+
                 </div>
             </div>
+        </div>
         </footer>
 
 
     </div>
 </div>
-
-
 </body>
 
     <!--   Core JS Files   -->
