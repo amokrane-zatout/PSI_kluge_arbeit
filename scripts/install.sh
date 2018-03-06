@@ -24,7 +24,7 @@ pip3 install scipy
 pip3 install pandas
 pip3 install scikit-learn
 # Installation de mysql server
-
+pip3 install --upgrade django
 
 
 apt-get update
