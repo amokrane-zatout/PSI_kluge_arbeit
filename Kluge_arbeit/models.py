@@ -4,6 +4,7 @@
 from django.db import models
 
 class Utilisateur(models.Model):
+
   password = models.CharField(max_length=200)
   nom = models.CharField(max_length=200)
   prenom = models.CharField(max_length=200)
@@ -22,7 +23,7 @@ class Matiere (models.Model):
   degre_difficult = models.IntegerField()
   degre_preference = models.IntegerField()
   note_esperee = models.FloatField()
-  
+  utilisateur = models.ForeignKey(Utilisateur, on_delete=models.CASCADE, null = True)
 class Seance(models.Model):
   date = models.DateField('date published')
   heureDebut = models.DateTimeField()
@@ -37,4 +38,3 @@ class Chapitre (models.Model):
   acquis = models.BooleanField()
   progression = models.FloatField()
   matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE, null = True)
-  

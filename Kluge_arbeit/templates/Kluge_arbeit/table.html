@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'Kluge_arbeit/assets/img/apple-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{% static 'Kluge_arbeit/assets/img/favicon.png' %">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Kluge arbeit</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static 'Kluge_arbeit/assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="{% static 'Kluge_arbeit/assets/css/animate.min.css' %}" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="{% static 'Kluge_arbeit/assets/css/paper-dashboard.css' %}" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{% static 'Kluge_arbeit/assets/css/demo.css' %}" rel="stylesheet" />
+
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="{% static 'Kluge_arbeit/assets/css/themify-icons.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+
+    body {
+        color: #566787;
+		background: #f5f5f5;
+		font-family: 'Varela Round', sans-serif;
+		font-size: 13px;
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+		border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+	.table-title {
+		padding-bottom: 15px;
+		background: #435d7d;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+    }
+    .table-title h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+	.table-title .btn-group {
+		float: right;
+	}
+	.table-title .btn {
+		color: #fff;
+		float: right;
+		font-size: 13px;
+		border: none;
+		min-width: 40px;
+		border-radius: 2px;
+		border: none;
+		outline: none !important;
+		margin-left: 7px;
+	}
+	.table-title .btn i {
+		float: left;
+		font-size: 21px;
+		margin-right: 5px;
+	}
+	.table-title .btn span {
+		float: left;
+		margin-top: 2px;
+	}
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+		padding: 7px 5px;
+		vertical-align: middle;
+    }
+	table.table tr th:first-child {
+		width: 60px;
+	}
+	table.table tr th:last-child {
+		width: 100px;
+	}
+    table.table-striped tbody tr:nth-of-type(odd) {
+    	background-color: #fcfcfc;
+	}
+	table.table-striped.table-hover tbody tr:hover {
+		background: #f5f5f5;
+	}
+    table.table th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    table.table td:last-child i {
+		opacity: 0.9;
+		font-size: 22px;
+        margin: 0 5px;
+    }
+	table.table td a {
+		font-weight: bold;
+		color: #566787;
+		display: inline-block;
+		text-decoration: none;
+		outline: none !important;
+	}
+	table.table td a:hover {
+		color: #2196F3;
+	}
+	table.table td a.edit {
+        color: #FFC107;
+    }
+    table.table td a.delete {
+        color: #F44336;
+    }
+    table.table td i {
+        font-size: 19px;
+    }
+	table.table .avatar {
+		border-radius: 50%;
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+    .pagination {
+        float: right;
+        margin: 0 0 5px;
+    }
+    .pagination li a {
+        border: none;
+        font-size: 13px;
+        min-width: 30px;
+        min-height: 30px;
+        color: #999;
+        margin: 0 2px;
+        line-height: 30px;
+        border-radius: 2px !important;
+        text-align: center;
+        padding: 0 6px;
+    }
+    .pagination li a:hover {
+        color: #666;
+    }
+    .pagination li.active a, .pagination li.active a.page-link {
+        background: #03A9F4;
+    }
+    .pagination li.active a:hover {
+        background: #0397d6;
+    }
+	.pagination li.disabled i {
+        color: #ccc;
+    }
+    .pagination li i {
+        font-size: 16px;
+        padding-top: 6px
+    }
+    .hint-text {
+        float: left;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+	/* Custom checkbox */
+	.custom-checkbox {
+		position: relative;
+	}
+	.custom-checkbox input[type="checkbox"] {
+		opacity: 0;
+		position: absolute;
+		margin: 5px 0 0 3px;
+		z-index: 9;
+	}
+	.custom-checkbox label:before{
+		width: 18px;
+		height: 18px;
+	}
+	.custom-checkbox label:before {
+		content: '';
+		margin-right: 10px;
+		display: inline-block;
+		vertical-align: text-top;
+		background: white;
+		border: 1px solid #bbb;
+		border-radius: 2px;
+		box-sizing: border-box;
+		z-index: 2;
+	}
+	.custom-checkbox input[type="checkbox"]:checked + label:after {
+		content: '';
+		position: absolute;
+		left: 6px;
+		top: 3px;
+		width: 6px;
+		height: 11px;
+		border: solid #000;
+		border-width: 0 3px 3px 0;
+		transform: inherit;
+		z-index: 3;
+		transform: rotateZ(45deg);
+	}
+	.custom-checkbox input[type="checkbox"]:checked + label:before {
+		border-color: #03A9F4;
+		background: #03A9F4;
+	}
+	.custom-checkbox input[type="checkbox"]:checked + label:after {
+		border-color: #fff;
+	}
+	.custom-checkbox input[type="checkbox"]:disabled + label:before {
+		color: #b8b8b8;
+		cursor: auto;
+		box-shadow: none;
+		background: #ddd;
+	}
+	/* Modal styles */
+	.modal .modal-dialog {
+		max-width: 400px;
+	}
+	.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+		padding: 20px 30px;
+	}
+	.modal .modal-content {
+		border-radius: 3px;
+	}
+	.modal .modal-footer {
+		background: #ecf0f1;
+		border-radius: 0 0 3px 3px;
+	}
+    .modal .modal-title {
+        display: inline-block;
+    }
+	.modal .form-control {
+		border-radius: 2px;
+		box-shadow: none;
+		border-color: #dddddd;
+	}
+	.modal textarea.form-control {
+		resize: vertical;
+	}
+	.modal .btn {
+		border-radius: 2px;
+		min-width: 100px;
+	}
+	.modal form label {
+		font-weight: normal;
+	}
+
+	#wrapper{
+
+	background-color: #fff;
+	width: 196px;
+	height: 240px;
+	background-image: url(../../../images/Banners_200/CountdownToKickoff_200.jpg);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	border: 2px solid #8f8f8c;
+	border-radius: 10px;
+	padding-top: 5px;
+	padding-bottom: 8px;
+}
+#heading{
+	display: block;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 4px;
+	color: #ccc;
+}
+
+h1{
+  color: #ccc;
+  font-weight: 100;
+  font-size: 20px;
+  margin: 20px 0px 10px;
+}
+
+#clockdiv{
+	width: 200px;
+	font-family: sans-serif;
+	color: #fff;
+	display: none;
+	font-weight: 100;
+	text-align: center;
+	font-size: 20px;
+}
+#btnSeanceStart{
+padding-top: 40px;
+text-align: center;
+border-radius: 3px;
+}
+#clockdiv > div{
+	padding: 5px;
+	margin: -1px;
+	border-radius: 5px;
+	background: #135e37;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 4px;
+	border-radius: 3px;
+	background: #0C2340;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 12px;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	// Activate tooltip
+	$('[data-toggle="tooltip"]').tooltip();
+
+	// Select/Deselect checkboxes
+	var checkbox = $('table tbody input[type="checkbox"]');
+	$("#selectAll").click(function(){
+		if(this.checked){
+			checkbox.each(function(){
+				this.checked = true;
+			});
+		} else{
+			checkbox.each(function(){
+				this.checked = false;
+			});
+		}
+	});
+	checkbox.click(function(){
+		if(!this.checked){
+			$("#selectAll").prop("checked", false);
+		}
+	});
+});
+ function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+
+  return {
+    'total': t,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  clock.style.display = 'block';
+
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+    	hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    	minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    	secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+
+var schedule = [
+    ['Jan 29 2018 00:00:00', 	'Jan 30 2018 02:00:00',	'01_BSS_GameLogo_200.png'],
+    ['Aug 24 2018 00:00:00', 	'Aug 24 2018 19:00:00',	'02_BS_GameLogo_200.png'],
+    ['Aug 24 2018 00:00:00', 	'Aug 24 2018 19:00:00',	'03_RP_GameLogo_200.png'],
+	['Aug 24 2018 00:00:00', 	'Aug 24 2018 19:00:00',	'2018_Season_GameLogo_200.png']
+];
+
+// iterate over each element in the schedule
+for(var i=0; i<schedule.length; i++){
+  var startDate = schedule[i][0];
+  var endDate = schedule[i][1];
+
+  // put dates in milliseconds for easy comparisons
+  var startMs = Date.parse(startDate);
+  var endMs = Date.parse(endDate);
+  var currentMs = Date.parse(new Date());
+
+  // if current date is between start and end dates, display clock
+  if(endMs > currentMs && currentMs >= startMs ){
+		var imageDir = 'http://www.lswfootball.com/images/logos/game-logos-200/';
+		var fileName = schedule[i][2];
+		var img = document.getElementById('gamelogo');
+		img.src = imageDir + fileName;
+	  	initializeClock('clockdiv', endDate);
+  }
+}
+
+</script>
+  <!--   Core JS Files   -->
+    <script src="Kluge_arbeit/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="Kluge_arbeit/assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<script src="Kluge_arbeit/assets/js/bootstrap-checkbox-radio.js"></script>
+
+	<!--  Charts Plugin -->
+	<script src="Kluge_arbeit/assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="Kluge_arbeit/assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+	<script src="Kluge_arbeit/assets/js/paper-dashboard.js"></script>
+
+	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+	<script src="Kluge_arbeit/assets/js/demo.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="success">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+
+                   <img src="Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
+
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="{% url 'index' utilisateur_id  %}">
+                        <i class="ti-user"></i>
+                        <p>Mon profil</p>
+                    </a>
+                </li>
+                <li  class="active">
+                    <a href="{% url 'table' utilisateur_id  %}">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Gestion des matières</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard">
+                        <i class="ti-panel"></i>
+                        <p>Tableau de board</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-bell"></i>
+                                    <p class="notification">5</p>
+									<p>Notifications</p>
+									<b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+						<li>
+                            <a href="#">
+								<i class="ti-settings"></i>
+								<p>Settings</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2>Gerer <b>les matieres</b></h2>
+					</div>
+					<div class="col-sm-6">
+						<a href="{% url 'addMatiere' utilisateur_id   %}" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Ajouter une matiere</span></a>
+						<a href="{% url 'chapitre'   %}" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE86E;</i> <span>Gestion des chapitres</span></a>
+					</div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+						<th>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+						</th>
+                        <th>Titre de la matiere</th>
+                        <th>Degré de difficulté</th>
+						<th>Degré de préférence</th>
+						<th>Note espérée</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                {% for matiere in matiere_list %}
+                    <tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+                        <td>{{ matiere.libelle }}</td>
+                        <td>{{ matiere.degre_difficult }}</td>
+						<td>{{ matiere.degre_preference }}</td>
+						<td>{{ matiere.note_esperee }}</td>
+                        <td>
+                            <a href="{% url 'modifMatiere' utilisateur_id  matiere.id %}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Modifier">&#xE254;</i></a>
+                            <a href="{% url 'supprimMatiere' utilisateur_id  matiere.id %}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Supprimer">&#xE872;</i></a>
+							<a href="{% url 'addChapitre' utilisateur_id matiere.id %}" class="add" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Ajouter un chapitre">&#xE147;</i></a>
+                            <a href="/timer" class="add" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Commencer la session">&#xE855;</i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+			<div class="clearfix">
+                <div class="hint-text">Showing <b>4</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+
+					<li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+
+	<!-- Edit Modal HTML -->
+	<div id="addEmployeeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Ajouter une matiere</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Titre de la matiere</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="degDiff">Degré de difficulté</label>
+							<select class="form-control" id="degDiff">
+							<option>Difficile </option>
+							<option>Moyenne</option>
+							<option>Facile</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="degPref">Degré de préférence</label>
+							<select class="form-control" id="degPref">
+							<option>J'aime bien</option>
+							<option>je n'aime pas</option>
+							</select>
+						</div>
+						<div class="form-group">
+						<label>Note espérée</label>
+							<input type="email" class="form-control" required>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-success" value="Ajouter">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Edit Modal HTML -->
+	<div id="editEmployeeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Modifier une matiere</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Titre de la matiere</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="degDiff">Degré de difficulté</label>
+							<select class="form-control" id="degDiff">
+							<option>Difficile </option>
+							<option>Moyenne</option>
+							<option>Facile</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="degPref">Degré de préférence</label>
+							<select class="form-control" id="degPref">
+							<option>J'aime bien</option>
+							<option>je n'aime pas</option>
+							</select>
+						</div>
+						<div class="form-group">
+						<label>Note espérée</label>
+							<input type="email" class="form-control" required>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-info" value="Sauvegarder">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Delete Modal HTML -->
+	<div id="deleteEmployeeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Supprimer la matiere</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>This action cannot be undone.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-danger" value="Supprimer">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    <!-- ADD Chapitre HTML -->
+	<div id="addChapitreModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Ajouter une chapitre</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Titre du chapitre</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="degAc">Acquis</label>
+							<select class="form-control" id="degAc">
+							<option>Oui</option>
+							<option>Non</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="degPro">Progression</label>
+							<select class="form-control" id="degPro">
+							<option>0%-15%</option>
+							<option>15%-25%</option>
+                            <option>25%-45%</option>
+                            <option>45%-65%</option>
+                            <option>65%-75%</option>
+                            <option>75%-85%</option>
+                            <option>85%-100%</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-success" value="Ajouter">
+					</div>
+				</form>
+			</div>
+		</div>
+        </div>
+        <div id="startSession" class="modal fade">
+            <div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+			 <div id="wrapper">
+                <div id="heading">
+                <img id="gamelogo" src="../static/Kluge_arbeit/assets/background.png" width="200" height="63" alt="">
+                </div>
+                <div id="clockdiv" style="display: block;">
+                  <div>
+                    <span class="hours">02</span>
+                    <div class="smalltext">Hrs</div>
+                  </div>
+                  <div>
+                    <span class="minutes">00</span>
+                    <div class="smalltext">Mins</div>
+                  </div>
+                  <div>
+                    <span class="seconds">00</span>
+                    <div class="smalltext">Secs</div>
+                  </div>
+                </div>
+                <div id="btnSeanceStart">
+                    <!--<a href="feedback.html" class="btn btn-success" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Abandonner">Abandonner</i></a>-->
+                    <input type="button" class="btn btn-danger" value="Abandonner">
+                </div>
+            </div>
+                    </form>
+			</div>
+		</div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+				<div class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="">Kluge arbeit</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+
+
+
+</html>
