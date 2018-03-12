@@ -108,30 +108,11 @@ border-radius: 3px;
     	<div class="sidebar-wrapper">
             <div class="logo">
 
-                   <img src="Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
+                   <img src="../static/Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
 
             </div>
 
-            <ul class="nav">
-                <li>
-                    <a href="{% url 'index' utilisateur_id  %}">
-                        <i class="ti-user"></i>
-                        <p>Mon profil</p>
-                    </a>
-                </li>
-                <li  class="active">
-                    <a href="{% url 'table' utilisateur_id  %}">
-                        <i class="ti-view-list-alt"></i>
-                        <p>Gestion des matières</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard">
-                        <i class="ti-panel"></i>
-                        <p>Tableau de board</p>
-                    </a>
-                </li>
-            </ul>
+
     	</div>
     </div>
 
@@ -241,6 +222,8 @@ border-radius: 3px;
                                                  </td>
                                                  <td>Chapitre 3</td>
                                                </tr>
+                                                            <br>
+                                                <a href="{% url 'table' 1 %}" type="submit" class="btn btn-danger" >OK</a>
                                             </div>
                                         </div>
                                         </div>

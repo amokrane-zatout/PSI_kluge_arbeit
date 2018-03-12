@@ -29,8 +29,63 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="{% static 'Kluge_arbeit/assets/css/themify-icons.css' %}" rel="stylesheet">
+	<script>
 
-<style type="text/css">
+
+	function run(interval,pause, frames) {
+    var int = 1;
+	var v_id = "i1";
+	var myVar;
+
+	interval =  ( 35000) / 7;
+	pause = pause * 1000;
+
+    function setPic() {
+		document.getElementById("p").id = v_id;
+                           };
+
+	function func() {
+
+
+		int++;
+
+		document.getElementById(v_id).id = "p";//"Pour la pause
+
+		v_id = "i" + int;
+
+
+		myVar = setTimeout(setPic, pause);
+
+        if(int === frames) {
+				int = 1;
+				document.getElementById("p").id = "i1";
+					v_id = "i1";
+				           }
+
+    }
+
+    var swap = window.setInterval(func, interval);
+}
+
+//// Modify here
+run(47,2,7); //Time in seconds,pause en in seconds, frames
+////
+	</script>
+    <style type="text/css">
+		#p { background-image: url('../static/Kluge_arbeit/assets/img/sun.png');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+		#b1 { background-image: url('images/1.jpg');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+
+		#i1 { background-image: url('../static/Kluge_arbeit/assets/img/1.jpg');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+		#i2 { background-image: url('../static/Kluge_arbeit/assets/img/2.jpg');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+		#i3 { background-image: url('../static/Kluge_arbeit/assets/img/3.jpg');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+		#i4 { background-image: url('../static/Kluge_arbeit/assets/img/4.jpg');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+		#i5 { background-image: url('../static/Kluge_arbeit/assets/img/5.jpg');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+		#i6 { background-image: url('../static/Kluge_arbeit/assets/img/6.jpg');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+		#i7 { background-image: url('../static/Kluge_arbeit/assets/img/7.jpg');  background-repeat: no-repeat; align-items: center; background-size: 100px 100px; }
+
+		#b7 { background: hsl(30, 50%, 50%); }
+
+
 
     body {
         color: #566787;
@@ -317,75 +372,11 @@ border-radius: 3px;
 }
 
 </style>
-<!--<script type="text/javascript">-->
-<!--$(document).ready(function(){-->
-	<!--// Activate tooltip-->
-	<!--$('[data-toggle="tooltip"]').tooltip();-->
 
-	<!--// Select/Deselect checkboxes-->
-	<!--var checkbox = $('table tbody input[type="checkbox"]');-->
-	<!--$("#selectAll").click(function(){-->
-		<!--if(this.checked){-->
-			<!--checkbox.each(function(){-->
-				<!--this.checked = true;-->
-			<!--});-->
-		<!--} else{-->
-			<!--checkbox.each(function(){-->
-				<!--this.checked = false;-->
-			<!--});-->
-		<!--}-->
-	<!--});-->
-	<!--checkbox.click(function(){-->
-		<!--if(!this.checked){-->
-			<!--$("#selectAll").prop("checked", false);-->
-		<!--}-->
-	<!--});-->
-<!--});-->
-
- <!--function getTimeRemaining(endtime) {-->
- <!--var countDownDate = new Date("Jan 31, 2018 15:37:25").getTime();-->
-  <!--var t = countDownDate - Date.parse(new Date());-->
-  <!--var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));-->
-    <!--var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));-->
-    <!--var seconds = Math.floor((t % (1000 * 60)) / 1000);-->
-  <!--return {-->
-    <!--'total': t,-->
-    <!--'hours': hours,-->
-    <!--'minutes': minutes,-->
-    <!--'seconds': seconds-->
-  <!--};-->
-<!--}-->
-
-<!--function initializeClock(id, endtime) {-->
-  <!--var clock = document.getElementById(id);-->
-  <!--var hoursSpan = clock.querySelector('.hours');-->
-  <!--var minutesSpan = clock.querySelector('.minutes');-->
-  <!--var secondsSpan = clock.querySelector('.seconds');-->
-
-  <!--function updateClock() {-->
-    <!--var t = getTimeRemaining(endtime);-->
-
-    <!--hoursSpan.innerHTML = ('0' + t.hours).slice(-2);-->
-    <!--minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);-->
-    <!--secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);-->
-
-    <!--if (t.total <= 0) {-->
-      <!--clearInterval(timeinterval);-->
-    <!--}-->
-  <!--}-->
-
-  <!--updateClock();-->
-  <!--var timeinterval = setInterval(updateClock, 1000);-->
-<!--}-->
-
-<!--var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);-->
-<!--initializeClock('clockdiv', deadline);-->
-
-<!--</script>-->
     <script>
 // Set the date we're counting down to
 {#var countDownDate = new Date("Jan 31, 2018 17:14:25").getTime();#}
-var countDownDate =new Date(new Date().getTime()+1*60000);
+var countDownDate =new Date(new Date().getTime()+29996);
 // Update the count down every 1 second
 var x = setInterval(function() {
 
@@ -425,30 +416,11 @@ var x = setInterval(function() {
     	<div class="sidebar-wrapper">
             <div class="logo">
 
-                   <img src="Kluge_arbeite/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
+                   <img src="../static/Kluge_arbeite/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
 
             </div>
 
-            <ul class="nav">
-     <li>
-                    <a href="{% url 'index' utilisateur_id  %}">
-                        <i class="ti-user"></i>
-                        <p>Mon profil</p>
-                    </a>
-                </li>
-                <li  class="active">
-                    <a href="{% url 'table' utilisateur_id  %}">
-                        <i class="ti-view-list-alt"></i>
-                        <p>Gestion des matières</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard">
-                        <i class="ti-panel"></i>
-                        <p>Tableau de board</p>
-                    </a>
-                </li>
-            </ul>
+
     	</div>
     </div>
 
@@ -499,7 +471,8 @@ var x = setInterval(function() {
 <div class="col-lg-8 col-md-7">
                         <div class="card">
                             <div class="content">
-
+ <div id="i1" style="height:100px; background-position :center;" >
+			</div>
                                 <form class="form"  action="/abandonSeance">
 			 <div id="wrapper">
                  <div id="clockdiv" style="display: block;">
@@ -511,24 +484,6 @@ var x = setInterval(function() {
                  <br>
                    <p>La session a démarré <br>Bon courage!</p>
 
-                <!--<div id="heading">
-               <p id="demo"></p>
-                <img id="gamelogo" src="./templates/assets/background.png" width="200" height="63" alt="">
-                </div>
-                <div id="clockdiv" style="display: block;">
-                  <div>
-                    <span class="hours" id="hours">02</span>
-                    <div class="smalltext">Hrs</div>
-                  </div>
-                  <div>
-                    <span class="minutes" id="minutes">00</span>
-                    <div class="smalltext">Mins</div>
-                  </div>
-                  <div>
-                    <span class="seconds" id="seconds">00</span>
-                    <div class="smalltext">Secs</div>
-                  </div>
-                </div>-->
                 <div id="btnSeanceStart">
                     <!--<a href="feedback.html" class="btn btn-success" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Abandonner">Abandonner</i></a>-->
                     <input type="submit" class="btn btn-danger" value="Abandonner">

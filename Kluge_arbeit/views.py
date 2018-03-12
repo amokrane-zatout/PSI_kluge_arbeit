@@ -12,6 +12,20 @@ from django.contrib.auth import authenticate, login, logout
 #from form import *
 
 
+
+import pandas
+
+from sklearn import model_selection
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+
 def index(request, utilisateur_id):
     utilisateur = get_object_or_404(Utilisateur, pk=utilisateur_id)
     if request.method == 'POST':
@@ -31,7 +45,7 @@ def index(request, utilisateur_id):
 
         utilisateur.save()
         print(request.POST.get('fichelecture', utilisateur.fiche_lecture))
-        return render(request, "Kluge_arbeit/user.html", {'utilisateur_id': utilisateur_id})
+        return render(request, "Kluge_arbeit/user.html", {'utilisateur_id': utilisateur_id, 'utilisateur':utilisateur})
 
         # if a GET (or any other method) we'll create a blank form
 
@@ -39,7 +53,7 @@ def index(request, utilisateur_id):
 
 
 
-    return render(request, "Kluge_arbeit/user.html", {'utilisateur_id' : utilisateur_id})
+    return render(request, "Kluge_arbeit/user.html", {'utilisateur_id' : utilisateur_id, 'utilisateur':utilisateur})
 
 def login(request):
     if request.method == 'POST':
@@ -58,6 +72,8 @@ def login(request):
                 'error_message': "login ou mot de passe incorrect",
             })
         else:
+
+
 
             return HttpResponseRedirect(reverse('index', args=(utilisateur.id,)))
 

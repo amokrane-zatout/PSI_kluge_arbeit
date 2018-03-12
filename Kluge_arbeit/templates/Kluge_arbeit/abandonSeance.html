@@ -44,30 +44,11 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
 
-                   <img src="Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
+                   <img src="../static/Kluge_arbeit/assets/img/KlugeLogo.png" alt="Let's work smarter!" width="190" height="132" border="0">
 
             </div>
 
-            <ul class="nav">
-                <li>
-                    <a href="/index">
-                        <i class="ti-user"></i>
-                        <p>Mon profil</p>
-                    </a>
-                </li>
-                <li  class="active">
-                    <a href="table.html">
-                        <i class="ti-view-list-alt"></i>
-                        <p>Gestion des matières</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard">
-                        <i class="ti-panel"></i>
-                        <p>Tableau de board</p>
-                    </a>
-                </li>
-            </ul>
+
     	</div>
     </div>
 
@@ -118,7 +99,7 @@
                  <div class="col-lg-8 col-md-7">
                         <div class="card">
                             <div class="content">
-                                <form action="/table">
+                                <form >
                                     <div class="modal-header">
                                         <h4 class="modal-title">Abandonner la séance</h4>
                                     </div>
@@ -127,8 +108,8 @@
                                         <p class="text-warning"><small>Dommage pour tes projets.</small></p>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                                        <input type="submit" class="btn btn-danger" value="Abandonner">
+                                        <a href="/timer" type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">Annuler</a>
+                                        <a href="{% url 'table' 1 %}" type="submit" class="btn btn-danger" >Abandonner</a>
                                     </div>
                                 </form>
                             </div>
