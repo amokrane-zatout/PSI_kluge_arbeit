@@ -33,6 +33,10 @@ Aprés avoir Forker le Projet et installer les outils nécessaires, Lancer un te
  - Lancer l'application sur http://localhost:8000/
  
  
+ # Management du Projet 
+ 
+  - Trello : https://trello.com/b/fYImX64c/psi
+  - Partage des ressources et documents de projet : https://drive.google.com/open?id=0Bx3-cDABO8WgT0w1UHJFRVNRR2c
  
  
  
