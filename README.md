@@ -10,4 +10,32 @@
 [![Coverage Status](https://coveralls.io/repos/github/amokrane-zatout/PSI_kluge_arbeit/badge.svg?branch=master)](https://coveralls.io/github/amokrane-zatout/PSI_kluge_arbeit?branch=master) | [![Coverage Status](https://coveralls.io/repos/github/amokrane-zatout/PSI_kluge_arbeit/badge.svg?branch=develop)](https://coveralls.io/github/amokrane-zatout/PSI_kluge_arbeit?branch=develop)
 
 
+# Développeurs : 
+
+- BOULHDIR Hajar 
+- MASLOUHI Nadia 
+- MEDJIR Zakaria 
+- ZATOUT Amokrane
+
+
+# Prérequis 
+
+- Installation de VirtualBox
+- Installation de Vagrant 
+
+# Installation 
+
+Aprés avoir Forker le Projet et installer les outils nécessaires, Lancer un terminal et exécuter les commandes suivantes : 
+
+ - cd ~/{$project}
+ - vagrant up
+ - vagrant ssh -c "/usr/bin/python3.5 -u /vagrant/manage.py runserver 0.0.0.0:8000"
+ - Lancer l'application sur http://localhost:8000/
+ 
+ 
+ 
+ 
+ 
+ 
+
 
